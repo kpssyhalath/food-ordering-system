@@ -1,115 +1,111 @@
-print("\n" * 5)                  
+print("\n" * 5)
 
-import datetime                    
-import os                          
+import datetime
+import os
 
-list_foods = []                    
-list_drinks = []                   
-list_services = []                 
+list_foods = []
+list_drinks = []
+list_services = []
 
-list_item_price = [0] * 100        
-                                  
-var_discount_1 = 200                      
-var_discount_2 = 1000                     
-var_discount_3 = 5000                     
-var_discount_1_rate = 0.05                
-var_discount_2_rate = 0.10                
-var_discount_3_rate = 0.15                
+list_item_price = [0] * 100
 
+var_discount_1 = 200
+var_discount_2 = 1000
+var_discount_3 = 5000
+var_discount_1_rate = 0.05
+var_discount_2_rate = 0.10
+var_discount_3_rate = 0.15
 
-navigator_symbol = "/" 
+navigator_symbol = "/"
 if os.name == "nt":
-    navigator_symbol = "\\" 
-
+    navigator_symbol = "\\"
 
 def def_default():
-    global list_drinks, list_foods, list_services, list_item_order, list_item_price     
-    list_item_order = [0] * 100                    
-def_default()                                      
-                                                   
-
+    global list_drinks, list_foods, list_services, list_item_order, list_item_price
+    list_item_order = [0] * 100
+def_default()
 
 def def_main():
     while True:
-        print("*" * 28 + "FOOD ORDERING SYSTEM" + "*" * 24 + "\n") 
-        print("*" * 31 + "MAIN MENU" + "*" * 32 + "\n"     
-              "\t(O) ORDER\n"                              
+        print("*" * 28 + "FOOD ORDERING SYSTEM" + "*" * 24 + "\n")
+        print("*" * 31 + "MAIN MENU" + "*" * 32 + "\n"
+              "\t(O) ORDER\n"
               "\t(R) REPORT\n"
               "\t(P) PAYMENT\n"
               "\t(E) EXIT\n" +
               "_" * 72)
 
-        input_1 = str(input("Please Select Your Operation: ")).upper()    
-        if (len(input_1) == 1):                                           
-            if (input_1 == 'O'):                                          
-                print("\n" * 10)                                        
-                def_order_menu()                                          
-                break                                                     
-            elif (input_1 == 'R'):                                        
-                print("\n" * 10)                                        
-                def_report()                                              
-                break                                                     
-            elif (input_1 == 'P'):                                        
-                print("\n" * 10)                                         
-                def_payment()                                             
-                break                                                     
-            elif (input_1 == 'E'):                                        
-                print("*" * 32 + "THANK YOU" + "*" * 31 + "\n")           
-                break                                                     
-            else:                                                                                 
-                print("\n" * 10 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")     
-        else:                                                                                     
-            print("\n" * 10 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")        
+        input_1 = str(input("Please Select Your Operation: ")).upper()
+        if len(input_1) == 1:
+            if input_1 == 'O':
+                print("\n" * 10)
+                def_order_menu()
+                break
+            elif input_1 == 'R':
+                print("\n" * 10)
+                def_report()
+                break
+            elif input_1 == 'P':
+                print("\n" * 10)
+                def_payment()
+                break
+            elif input_1 == 'E':
+                print("*" * 32 + "THANK YOU" + "*" * 31 + "\n")
+                break
+            else:
+                print("\n" * 10 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")
+        else:
+            print("\n" * 10 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")
 
-def def_order_menu():                                                                               
-    while True:                                             
-        print("*" * 31 + "ORDER PAGE" + "*" * 31 + "\n"    
+def def_order_menu():
+    while True:
+        print("*" * 31 + "ORDER PAGE" + "*" * 31 + "\n"
               "\t(F) FOODS AND DRINKS\n"
               "\t(O) OTHER SERVICES\n"
               "\t(M) MAIN MENU\n"
               "\t(E) EXIT\n" +
               "_" * 72)
 
-        input_1 = str(input("Please Select Your Operation: ")).upper() 
+        input_1 = str(input("Please Select Your Operation: ")).upper()
         if len(input_1) == 1:
-            if (input_1 == 'F'):  
+            if input_1 == 'F':
                 print("\n" * 10)
                 def_food_drink_order()
                 break
-            elif (input_1 == 'O'):
+            elif input_1 == 'O':
                 print("\n" * 10)
-                def_other_services() 
+                def_other_services()
                 break
-            elif (input_1 == 'M'):
+            elif input_1 == 'M':
                 print("\n" * 10)
-                def_main() 
+                def_main()
                 break
-            elif (input_1 == 'E'):
+            elif input_1 == 'E':
                 print("*" * 32 + "THANK YOU" + "*" * 31 + "\n")
                 break
             else:
-                print("\n" * 10 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!") 
+                print("\n" * 10 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")
         else:
             print("\n" * 10 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")
 
-def def_full_file_reader():                                                                        
-    file_foods = open('files'+navigator_symbol+'list_foods.fsd', 'r') 
-    for i in file_foods: 
-        list_foods.append(str(i.strip())) 
+def def_full_file_reader():
+    file_foods = open('files'+navigator_symbol+'list_foods.fsd', 'r')
+    for i in file_foods:
+        list_foods.append(str(i.strip()))
     file_foods.close()
 
-    file_drinks = open('files'+navigator_symbol+'list_drinks.fsd', 'r') 
+    file_drinks = open('files'+navigator_symbol+'list_drinks.fsd', 'r')
     for i in file_drinks:
         list_drinks.append(str(i.strip()))
     file_drinks.close()
 
-    file_services = open('files'+navigator_symbol+'list_services.fsd', 'r') 
+    file_services = open('files'+navigator_symbol+'list_services.fsd', 'r')
     for i in file_services:
         list_services.append(str(i.strip()))
     file_services.close()
 
     i = 0
-    while i <= (len(list_foods) - 1): 
+    while i <= (len(list_foods) - 1):
         if '$' in list_foods[i]:
             list_foods[i] = str(list_foods[i][:list_foods[i].index('$') - 1]) + ' ' * (20 - (list_foods[i].index('$') - 1)) + str(list_foods[i][list_foods[i].index('$'):])
         i += 1
@@ -127,7 +123,7 @@ def def_full_file_reader():
         i += 1
 def_full_file_reader()
 
-def def_file_sorter(): 
+def def_file_sorter():
     global list_foods, list_drinks, list_services
     list_foods = sorted(list_foods)
     list_drinks = sorted(list_drinks)
@@ -135,134 +131,133 @@ def def_file_sorter():
 
     i = 0
     while i < len(list_foods):
-        list_item_price[i] = float(list_foods[i][int(list_foods[i].index("$") + 2):]) 
+        list_item_price[i] = float(list_foods[i][int(list_foods[i].index("$") + 2):])
         i += 1
 
     i = 0
     while i < len(list_drinks):
-        list_item_price[40 + i] = float(list_drinks[i][int(list_drinks[i].index("$") + 2):]) 
+        list_item_price[40 + i] = float(list_drinks[i][int(list_drinks[i].index("$") + 2):])
         i += 1
 
     i = 0
     while i < len(list_services):
-        list_item_price[80 + i] = float(list_services[i][int(list_services[i].index("$") + 2):]) 
+        list_item_price[80 + i] = float(list_services[i][int(list_services[i].index("$") + 2):])
         i += 1
 def_file_sorter()
 
 def def_food_drink_order():
     while True:
-            print("*" * 26 + "ORDER FOODS & DRINKS" + "*" * 26)
-            print(" |NO| |FOOD NAME|         |PRICE|   |  |NO| |DRINK NAME|        |PRICE|")
-
-            i = 0
-            while i < len(list_foods) or i < len(list_drinks):
-                var_space = 1
-                if i <= 8:                      
-                    var_space = 2
-
-                if i < len(list_foods):
-                    food = " (" + str(i + 1) + ")" + " " * var_space + str(list_foods[i]) + "  | " 
-                else:
-                    food = " " * 36 + "| " 
-                if i < len(list_drinks):
-                    drink = "(" + str(41 + i) + ")" + " " + str(list_drinks[i])
-                else:
-                    drink = ""
-                print(food, drink)
-                i += 1
-
-            print("\n (M) MAIN MENU                   (P) PAYMENT                   (E) EXIT\n" + "_" * 72)
-
-            input_1 = input("Please Select Your Operation: ").upper() 
-            if (input_1 == 'M'):
-                print("\n" * 10)
-                def_main() 
-                break
-            if (input_1 == 'E'):
-                print("*" * 32 + "THANK YOU" + "*" * 31 + "\n") 
-                break
-            if (input_1 == 'P'):
-                print("\n" * 10)
-                def_payment() 
-                break
-            try:        
-                int(input_1)
-                if ((int(input_1) <= len(list_foods) and int(input_1) > 0) or (int(input_1) <= len(list_drinks) + 40 and int(input_1) > 40)):
-                     try:
-                        print("\n" + "_" * 72 + "\n" + str(list_foods[int(input_1) - 1])) 
-                     except:
-                        pass
-                     try:
-                         print("\n" + "_" * 72 + "\n" + str(list_drinks[int(input_1) - 41])) 
-                     except:
-                        pass
-
-                     input_2 = input("How Many You Want to Order?: ").upper() 
-                     if int(input_2) > 0:
-                        list_item_order[int(input_1) - 1] += int(input_2) 
-                        print("\n" * 10)
-                        print("Successfully Ordered!")
-                        def_food_drink_order() 
-                        break
-                     else:
-                        print("\n" * 10 + "ERROR: Invalid Input (" + str(input_2) + "). Try again!")
-            except:
-                print("\n" * 10 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")
-
-def def_other_services():
-    while True:
-        print("*" * 29 + "OTHER SERVICES" + "*" * 29)
-        print(" |NO| |SERVICE NAME|      |PRICE|")  
+        print("*" * 26 + "ORDER FOODS & DRINKS" + "*" * 26)
+        print(" |NO| |FOOD NAME|         |PRICE|   |  |NO| |DRINK NAME|        |PRICE|")
 
         i = 0
-        while i < len(list_services):
-            print(" (" + str(81+ i) + ")" + " " + str(list_services[i])) 
+        while i < len(list_foods) or i < len(list_drinks):
+            var_space = 1
+            if i <= 8:
+                var_space = 2
 
+            if i < len(list_foods):
+                food = " (" + str(i + 1) + ")" + " " * var_space + str(list_foods[i]) + "  | "
+            else:
+                food = " " * 36 + "| "
+            if i < len(list_drinks):
+                drink = "(" + str(41 + i) + ")" + " " + str(list_drinks[i])
+            else:
+                drink = ""
+            print(food, drink)
             i += 1
 
         print("\n (M) MAIN MENU                   (P) PAYMENT                   (E) EXIT\n" + "_" * 72)
 
         input_1 = input("Please Select Your Operation: ").upper()
-        if (input_1 == 'M'):
+        if input_1 == 'M':
             print("\n" * 10)
-            def_main() 
+            def_main()
             break
-        if (input_1 == 'E'):
+        elif input_1 == 'E':
             print("*" * 32 + "THANK YOU" + "*" * 31 + "\n")
             break
-        if (input_1 == 'P'):
+        elif input_1 == 'P':
             print("\n" * 10)
-            def_payment() 
+            def_payment()
             break
-        try:
-            int(input_1)
-            if (int(input_1) > 80) and (int(input_1) < 100):
+        elif input_1.isdigit():
+            input_1 = int(input_1)
+            if (1 <= input_1 <= len(list_foods)) or (41 <= input_1 <= (40 + len(list_drinks))):
+                if input_1 <= len(list_foods):
+                    print("\n" + "_" * 72 + "\n" + str(list_foods[input_1 - 1]))
+                else:
+                    print("\n" + "_" * 72 + "\n" + str(list_drinks[input_1 - 41]))
+
+                input_2 = input("How Many You Want to Order?: ").upper()
+                if input_2.isdigit() and int(input_2) > 0:
+                    input_2 = int(input_2)
+                    list_item_order[input_1 - 1] += input_2
+                    print("\n" * 10)
+                    print("Successfully Ordered!")
+                    def_food_drink_order()
+                    break
+                else:
+                    print("\n" * 10 + "ERROR: Invalid Input (" + str(input_2) + "). Try again!")
+            else:
+                print("\n" * 10 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")
+        else:
+            print("\n" * 10 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")
+
+def def_other_services():
+    while True:
+        print("*" * 29 + "OTHER SERVICES" + "*" * 29)
+        print(" |NO| |SERVICE NAME|      |PRICE|")
+
+        i = 0
+        while i < len(list_services):
+            service = " (" + str(i + 81) + ") " + str(list_services[i])
+            print(service)
+            i += 1
+
+        print("\n (M) MAIN MENU                   (P) PAYMENT                   (E) EXIT\n" + "_" * 72)
+
+        input_1 = input("Please Select Your Operation: ").upper()
+        if input_1 == 'M':
+            print("\n" * 10)
+            def_main()
+            break
+        elif input_1 == 'E':
+            print("*" * 32 + "THANK YOU" + "*" * 31 + "\n")
+            break
+        elif input_1 == 'P':
+            print("\n" * 10)
+            def_payment()
+            break
+        elif input_1.isdigit() and (81 <= int(input_1) <= (80 + len(list_services))):
+            print("\n" + "_" * 72 + "\n" + str(list_services[int(input_1) - 81]))
+            input_2 = input("How Many You Want to Order?: ").upper()
+            if input_2.isdigit() and int(input_2) > 0:
+                input_2 = int(input_2)
+                list_item_order[int(input_1) - 1] += input_2
                 print("\n" * 10)
-                print("Successfully Ordered: " + str(list_services[int(input_1) - 81])) 
-                list_item_order[int(input_1) - 1] = 1
+                print("Successfully Ordered!")
                 def_other_services()
                 break
             else:
-                print("\n" * 10 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")
-        except:
+                print("\n" * 10 + "ERROR: Invalid Input (" + str(input_2) + "). Try again!")
+        else:
             print("\n" * 10 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")
 
 def def_report():
-    while True:
-        print("*" * 33 + "REPORT" + "*" * 33 + "\n")
-        file_report = open('files'+navigator_symbol+'report.fsd', 'r').read() 
-        print(file_report)
-        print("\n(M) MAIN MENU          (E) EXIT\n" + "_" * 72)
-        input_1 = str(input("Please Select Your Operation: ")).upper()
-        if (input_1 == 'M'):
-            print("\n" * 10)
-            def_main() 
-            break
-        elif (input_1 == 'E'):
-            print("*" * 32 + "THANK YOU" + "*" * 31 + "\n") 
-            break
-        else:
-            print("\n" * 10 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")
+    file_report = open('files'+navigator_symbol+'report.fsd', 'r')
+    print("*" * 32 + "REPORT" + "*" * 33)
+    for i in file_report:
+        print(str(i.strip()))
+    file_report.close()
+    print("\n (M) MAIN MENU                   (E) EXIT\n" + "_" * 72)
+
+    input_1 = input("Please Select Your Operation: ").upper()
+    if input_1 == 'M':
+        print("\n" * 10)
+        def_main()
+    elif input_1 == 'E':
+        print("*" * 32 + "THANK YOU" + "*" * 31 + "\n")
 
 def def_payment():
     while True:
@@ -326,23 +321,34 @@ def def_payment():
         print("\n (P) PAY           (M) MAIN MENU           (R) REPORT          (E) EXIT\n" + "_" * 72)
         input_1 = str(input("Please Select Your Operation: ")).upper()
         if (input_1 == 'P'):
-            print("\n" * 10)
-            print("Successfully Paid!")
-            file_report = open('files'+navigator_symbol+'report.fsd', 'a') 
-            file_report.write(report_new)
-            file_report.close()
-            def_default() 
+            while True:
+                payment = input("Enter the amount paid: $")
+                if payment.replace('.', '', 1).isdigit():
+                    payment = float(payment)
+                    if payment >= total_price:
+                        change = payment - total_price
+                        print(f"Successfully Paid! Change: ${change:.2f}")
+                        with open('files'+navigator_symbol+'report.fsd', 'a') as file_report:
+                            file_report.write(report_new + "\n")
+                        def_default()
+                        def_main()
+                        break
+                    else:
+                        print("ERROR: Insufficient amount. Try again!")
+                else:
+                    print("ERROR: Invalid amount. Try again!")
         elif (input_1 == 'M'):
             print("\n" * 10)
-            def_main() 
+            def_main()
             break
         elif (input_1 == 'R'):
             print("\n" * 10)
-            def_report() 
+            def_report()
             break
-        elif ('E' in input_1) or ('e' in input_1):
+        elif (input_1 == 'E'):
             print("*" * 32 + "THANK YOU" + "*" * 31 + "\n")
             break
         else:
             print("\n" * 10 + "ERROR: Invalid Input (" + str(input_1) + "). Try again!")
-def_main() 
+
+def_main()
